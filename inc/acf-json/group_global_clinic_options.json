@@ -1,0 +1,86 @@
+{
+  "key": "group_global_clinic_options",
+  "title": "Global Brand & Clinic Settings",
+  "fields": [
+    {
+      "key": "field_opt_primary_color",
+      "label": "Brand Primary Color (Luxury Bronze)",
+      "name": "brand_primary_color",
+      "type": "color_picker",
+      "default_value": "#986a3e"
+    },
+    {
+      "key": "field_opt_accent_color",
+      "label": "Brand Accent Gold / Copper Color",
+      "name": "brand_accent_color",
+      "type": "color_picker",
+      "default_value": "#70441b"
+    },
+    {
+      "key": "field_opt_dark_color",
+      "label": "Brand Dark Surface Color (Deep Obsidian)",
+      "name": "brand_dark_color",
+      "type": "color_picker",
+      "default_value": "#101011"
+    },
+    {
+      "key": "field_opt_clinic_name",
+      "label": "Clinic Brand Name",
+      "name": "clinic_brand_name",
+      "type": "text",
+      "default_value": "DYNAMIC CLINIC"
+    },
+    {
+      "key": "field_opt_clinic_phone",
+      "label": "Concierge Phone",
+      "name": "clinic_phone",
+      "type": "text",
+      "default_value": "+1 (800) 456-7890"
+    },
+    {
+      "key": "field_opt_clinic_email",
+      "label": "Concierge Email",
+      "name": "clinic_email",
+      "type": "email",
+      "default_value": "concierge@dynamicclinic.com"
+    },
+    {
+      "key": "field_opt_clinic_address",
+      "label": "Physical Address",
+      "name": "clinic_address",
+      "type": "text",
+      "default_value": "450 Luxury Boulevard, Suite 800, Beverly Hills, CA"
+    },
+    {
+      "key": "field_opt_nav_cta_text",
+      "label": "Header Appointment Button Text",
+      "name": "header_appointment_cta_text",
+      "type": "text",
+      "default_value": "BOOK APPOINTMENT"
+    },
+    {
+      "key": "field_opt_nav_cta_link",
+      "label": "Header Appointment Button Link",
+      "name": "header_appointment_cta_link",
+      "type": "text",
+      "default_value": "#book"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "clinic-theme-settings"
+      }
+    ]
+  ],
+  "menu_order": 2,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": ""
+}

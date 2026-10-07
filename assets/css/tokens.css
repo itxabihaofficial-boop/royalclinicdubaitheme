@@ -1,0 +1,256 @@
+/**
+ * Dynamic Clinic - Global Design Tokens
+ * All colors, spacing, typography, and elevations are declared here globally.
+ * Any change here updates the entire theme automatically.
+ */
+
+:root {
+  /* ==========================================================================
+     Global Brand Palette (Exact Extracted Tokens from Brand Inspector)
+     ========================================================================== */
+
+  /* Bronze / Caramel Gold Primary */
+  --color-bronze: #986a3e;
+  --color-bronze-80: #986a3ecc;
+  --color-bronze-60: #986a3e99;
+  --color-bronze-50: #986a3e80;
+  --color-bronze-10: #986a3e1a;
+  --color-bronze-06: #986a3e0f;
+
+  /* Rich Espresso & Copper Accents */
+  --color-espresso: #633b2c;
+  --color-espresso-80: #633b2c80;
+  --color-espresso-10: #633b2c1a;
+  --color-copper: #70441b;
+  --color-espresso-dark: #261813;
+
+  /* Warm Neutrals & Muted Tones */
+  --color-taupe: #7a685d;
+  --color-slate-grey: #606266;
+  --color-graphite: #2b2b2c;
+  --color-obsidian: #101011;
+
+  /* Warm Whites & Creams */
+  --color-warm-white: #fffdf9;
+  --color-cream: #fdf7ef;
+  --color-sand: #f7ecdf;
+  --color-white: #ffffff;
+  --color-white-40: #fff6;
+  --color-white-10: #ffffff1a;
+  --color-white-transparent: #fff0;
+
+  /* ==========================================================================
+     Elementor / Inspector Global Color Aliases (Direct Hash Mappings)
+     ========================================================================== */
+  --e-global-color-75f: #986a3e;
+  --e-global-color-2de: #633b2c;
+  --e-global-color-c9a: #fdf7ef;
+  --e-global-color-856: #fffdf9;
+  --e-global-color-ff9: #fff;
+  --e-global-color-3ee: #f7ecdf;
+  --e-global-color-0c5: #fff0;
+  --e-global-color-701: #986a3ecc;
+  --e-global-color-622: #986a3e80;
+  --e-global-color-80d: #986a3e99;
+  --e-global-color-f1f: #ffffff1a;
+  --e-global-color-7b8: #633b2c1a;
+  --e-global-color-a6f: #986a3e1a;
+  --e-global-color-abf: #fff6;
+  --e-global-color-d04: #7a685d;
+  --e-global-color-a02: #101011;
+  --e-global-color-028: #606266;
+  --e-global-color-3b8: #2b2b2c;
+  --e-global-color-4c5: #986a3e0f;
+  --e-global-color-282: #261813;
+  --e-global-color-e32: #ffffff1a;
+  --e-global-color-61c: #633b2c80;
+  --e-global-color-a56: #70441b;
+
+  /* Global Color Hash Aliases (Generic) */
+  --global-color-75f: #986a3e;
+  --global-color-2de: #633b2c;
+  --global-color-c9a: #fdf7ef;
+  --global-color-856: #fffdf9;
+  --global-color-ff9: #fff;
+  --global-color-3ee: #f7ecdf;
+  --global-color-0c5: #fff0;
+  --global-color-701: #986a3ecc;
+  --global-color-622: #986a3e80;
+  --global-color-80d: #986a3e99;
+  --global-color-f1f: #ffffff1a;
+  --global-color-7b8: #633b2c1a;
+  --global-color-a6f: #986a3e1a;
+  --global-color-abf: #fff6;
+  --global-color-d04: #7a685d;
+  --global-color-a02: #101011;
+  --global-color-028: #606266;
+  --global-color-3b8: #2b2b2c;
+  --global-color-4c5: #986a3e0f;
+  --global-color-282: #261813;
+  --global-color-e32: #ffffff1a;
+  --global-color-61c: #633b2c80;
+  --global-color-a56: #70441b;
+
+  /* ==========================================================================
+     Theme Global Design Tokens (Semantic Layer)
+     ========================================================================== */
+
+  /* Primary Brand (Warm Bronze Gold) */
+  --color-primary: var(--color-bronze);              /* #986a3e */
+  --color-primary-light: #b3824f;
+  --color-primary-dark: var(--color-copper);         /* #70441b */
+  --color-primary-alpha: var(--color-bronze-10);     /* #986a3e1a */
+  --color-primary-alpha-50: var(--color-bronze-50);  /* #986a3e80 */
+  --color-primary-alpha-80: var(--color-bronze-80);  /* #986a3ecc */
+
+  /* Secondary Brand (Deep Espresso / Chestnut) */
+  --color-secondary: var(--color-espresso);          /* #633b2c */
+  --color-secondary-alpha: var(--color-espresso-10); /* #633b2c1a */
+  --color-secondary-alpha-50: var(--color-espresso-80); /* #633b2c80 */
+
+  /* Light Tones */
+  --color-light: var(--color-warm-white);            /* #fffdf9 */
+  --color-light-cream: var(--color-cream);           /* #fdf7ef */
+  --color-light-sand: var(--color-sand);             /* #f7ecdf */
+  --color-light-soft: rgba(255, 253, 249, 0.88);
+  --color-light-dim: rgba(255, 253, 249, 0.55);
+
+  /* Muted Minerals */
+  --color-muted: var(--color-taupe);                 /* #7a685d */
+  --color-muted-dim: rgba(122, 104, 93, 0.45);
+  --color-muted-border: var(--color-white-10);       /* #ffffff1a */
+
+  /* Dark Bases */
+  --color-dark: var(--color-obsidian);               /* #101011 */
+  --color-dark-surface: #181514;                     /* Warm deep espresso charcoal */
+  --color-dark-elevated: var(--color-graphite);      /* #2b2b2c */
+  --color-dark-espresso: var(--color-espresso-dark); /* #261813 */
+  --color-dark-transparent: rgba(16, 16, 17, 0);
+  --color-footer-bg: #0c0b0c;
+
+  --color-black: #000000;
+
+  /* Luxury Accents */
+  --color-accent-gold: var(--color-bronze);          /* #986a3e */
+  --color-accent-amber: var(--color-copper);         /* #70441b */
+  --color-accent-glow: rgba(152, 106, 62, 0.35);
+  --color-accent-glow-strong: rgba(152, 106, 62, 0.55);
+
+  /* ==========================================================================
+     Page / Light Scheme Tones
+     ========================================================================== */
+  --color-page-bg: #f3ede4;            /* Warm cream — main page background */
+  --color-page-bg-alt: #ede5da;        /* Slightly deeper cream for sections */
+  --color-page-section: #fffdf9;       /* Near-white for card surfaces */
+
+  /* Semantic UI Tokens */
+  --bg-body: var(--color-page-bg);               /* Light warm cream background */
+  --text-main: var(--color-espresso);            /* Deep espresso for body copy */
+  --text-secondary: var(--color-taupe);          /* Warm taupe for secondary text */
+  --text-dim: rgba(99, 59, 44, 0.35);            /* Espresso 35% */
+  --border-subtle: rgba(152, 106, 62, 0.15);     /* Soft bronze border */
+  --border-primary: var(--color-bronze-50);
+  --color-badge-bg: rgba(255, 253, 249, 0.75);   /* Warm white glass */
+  --card-tag-bg: rgba(38, 24, 19, 0.82);
+
+  /* ==========================================================================
+     Header Tokens (Flat Light Bar — Dermato Style)
+     ========================================================================== */
+  --nav-bg: var(--color-page-bg);               /* Flat cream header background */
+  --nav-bg-scrolled: rgba(243, 237, 228, 0.96); /* Slightly more opaque on scroll */
+  --nav-text: var(--color-espresso);            /* Espresso nav links */
+  --nav-text-hover: var(--color-bronze);        /* Bronze hover colour */
+  --nav-active: var(--color-bronze);            /* Active link */
+  --nav-border-bottom: rgba(152, 106, 62, 0.12); /* Hairline separator */
+  --nav-btn-bg: transparent;
+  --nav-btn-border: rgba(152, 106, 62, 0.45);
+  --nav-btn-text: var(--color-espresso);
+  --nav-btn-hover-bg: var(--color-bronze);
+  --nav-btn-hover-text: var(--color-warm-white);
+
+  /* ==========================================================================
+     Hero Wrapper Tokens (Inset Card Frame)
+     ========================================================================== */
+  --hero-wrapper-padding: clamp(0.75rem, 2vw, 1.25rem);  /* Space between page edge and hero card */
+  --hero-wrapper-radius: 24px;                            /* Rounded corners of hero card */
+  --hero-wrapper-shadow: 0 8px 48px rgba(99, 59, 44, 0.18), 0 2px 6px rgba(99, 59, 44, 0.08);
+
+  /* Dynamic Gradients & Glass Effects */
+  --btn-primary-gradient: linear-gradient(135deg, #aa7845 0%, #87592f 100%);
+  --cta-gradient: radial-gradient(circle at 80% 20%, rgba(152, 106, 62, 0.22) 0%, rgba(38, 24, 19, 0.82) 60%), #1c110c;
+  --glass-nav-bg: var(--nav-bg);
+  --glass-nav-scrolled-bg: var(--nav-bg-scrolled);
+  --glass-nav-border: var(--nav-border-bottom);
+  --glass-blur: blur(20px);
+  --glass-card-bg: rgba(255, 253, 249, 0.6);
+  --glass-card-border: rgba(152, 106, 62, 0.18);
+
+  --shadow-subtle: 0 4px 20px rgba(99, 59, 44, 0.1);
+  --shadow-card: 0 8px 32px rgba(99, 59, 44, 0.14);
+  --shadow-card-hover: 0 18px 48px rgba(99, 59, 44, 0.22);
+  --shadow-glow: 0 0 35px var(--color-accent-glow);
+
+  /* ==========================================================================
+     Typography
+     ========================================================================== */
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: clamp(0.72rem, 0.7rem + 0.15vw, 0.8rem);
+  --font-size-sm: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+  --font-size-base: clamp(1rem, 0.96rem + 0.25vw, 1.125rem);
+  --font-size-md: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --font-size-lg: clamp(1.4rem, 1.25rem + 0.75vw, 1.85rem);
+  --font-size-xl: clamp(1.8rem, 1.5rem + 1.2vw, 2.5rem);
+  --font-size-2xl: clamp(2.3rem, 1.9rem + 2vw, 3.5rem);
+  --font-size-hero: clamp(2.75rem, 2.1rem + 3.5vw, 5.25rem);
+  --font-size-display: clamp(3.2rem, 2.4rem + 4.5vw, 6.5rem);
+
+  /* Line Heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.08em;
+  --tracking-luxury: 0.18em;
+
+  /* ==========================================================================
+     Spacing & Layout
+     ========================================================================== */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.25rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 5rem;
+  --space-3xl: 7.5rem;
+
+  --container-max: 1360px;
+  --container-narrow: 980px;
+  --gutter: clamp(1rem, 3vw, 2.5rem);
+
+  /* ==========================================================================
+     Border Radii
+     ========================================================================== */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-card: 22px;
+  --radius-pill: 9999px;
+
+  /* ==========================================================================
+     Transitions
+     ========================================================================== */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}

@@ -1,0 +1,80 @@
+{
+  "key": "group_scroll_reveal_section",
+  "title": "Philosophy (Scroll Text-Fill Reveal)",
+  "fields": [
+    {
+      "key": "field_reveal_eyebrow",
+      "label": "Section Eyebrow Tag",
+      "name": "reveal_eyebrow",
+      "type": "text",
+      "default_value": "PHILOSOPHY & CRAFT"
+    },
+    {
+      "key": "field_reveal_headline",
+      "label": "Scroll-Fill Statement Headline",
+      "name": "reveal_headline",
+      "type": "textarea",
+      "rows": 4,
+      "default_value": "Where clinical dermatology merges with bespoke aesthetic ritual to awaken the natural brilliance of your skin."
+    },
+    {
+      "key": "field_stat1_num",
+      "label": "Stat 1 Number",
+      "name": "stat_item_1_number",
+      "type": "text",
+      "default_value": "15+"
+    },
+    {
+      "key": "field_stat1_lbl",
+      "label": "Stat 1 Label",
+      "name": "stat_item_1_label",
+      "type": "text",
+      "default_value": "Years of Clinical Mastery"
+    },
+    {
+      "key": "field_stat2_num",
+      "label": "Stat 2 Number",
+      "name": "stat_item_2_number",
+      "type": "text",
+      "default_value": "99.4%"
+    },
+    {
+      "key": "field_stat2_lbl",
+      "label": "Stat 2 Label",
+      "name": "stat_item_2_label",
+      "type": "text",
+      "default_value": "Client Radiance Satisfaction"
+    },
+    {
+      "key": "field_stat3_num",
+      "label": "Stat 3 Number",
+      "name": "stat_item_3_number",
+      "type": "text",
+      "default_value": "100%"
+    },
+    {
+      "key": "field_stat3_lbl",
+      "label": "Stat 3 Label",
+      "name": "stat_item_3_label",
+      "type": "text",
+      "default_value": "Personalized Skincare Protocols"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "front_page"
+      }
+    ]
+  ],
+  "menu_order": 1,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": ""
+}

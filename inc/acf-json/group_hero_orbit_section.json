@@ -1,0 +1,97 @@
+{
+  "key": "group_hero_orbit_section",
+  "title": "Homepage Hero (Curved Arc Carousel)",
+  "fields": [
+    {
+      "key": "field_hero_badge",
+      "label": "Hero Pill Badge",
+      "name": "hero_badge_text",
+      "type": "text",
+      "default_value": "DYNAMIC CLINIC"
+    },
+    {
+      "key": "field_hero_title",
+      "label": "Hero Main Title",
+      "name": "hero_title",
+      "type": "text",
+      "default_value": "Beauty, Refined."
+    },
+    {
+      "key": "field_hero_subtitle",
+      "label": "Hero Subtitle",
+      "name": "hero_subtitle",
+      "type": "textarea",
+      "rows": 3,
+      "default_value": "Luxury hair, skin, and wellness treatments crafted to enhance your natural beauty."
+    },
+    {
+      "key": "field_hero_cta_text",
+      "label": "Hero Button Text",
+      "name": "hero_cta_text",
+      "type": "text",
+      "default_value": "BOOK APPOINTMENT"
+    },
+    {
+      "key": "field_hero_cta_link",
+      "label": "Hero Button Link",
+      "name": "hero_cta_link",
+      "type": "text",
+      "default_value": "#book"
+    },
+    {
+      "key": "field_hero_backdrop",
+      "label": "Hero Background Image",
+      "name": "hero_backdrop_image",
+      "type": "image",
+      "return_format": "url"
+    },
+    {
+      "key": "field_hero_cards_repeater",
+      "label": "Orbiting Treatment Cards",
+      "name": "hero_orbit_cards",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Add Treatment Card",
+      "sub_fields": [
+        {
+          "key": "field_card_title",
+          "label": "Treatment Title",
+          "name": "title",
+          "type": "text",
+          "default_value": "Skin Therapy"
+        },
+        {
+          "key": "field_card_img",
+          "label": "Card Image",
+          "name": "image",
+          "type": "image",
+          "return_format": "url"
+        },
+        {
+          "key": "field_card_url",
+          "label": "Target Link",
+          "name": "link",
+          "type": "text",
+          "default_value": "#services"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "front_page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": ""
+}

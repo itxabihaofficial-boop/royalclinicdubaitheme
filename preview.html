@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Clinic & Spa - Luxury Aesthetic Skincare</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+</head>
+
+<body>
+
+    <!-- Flat Three-Column Header (Dermato Style) -->
+    <header class="site-header" id="site-header">
+        <div class="nav-pill-wrapper">
+            <nav class="nav-pill" aria-label="Main Navigation">
+
+                <!-- Left: Desktop Navigation Menu -->
+                <ul class="nav-menu">
+                    <li class="nav-item current-menu-item"><a href="#hero" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#philosophy" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services <span class="nav-arrow">▾</span></a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Academy <span class="nav-arrow">▾</span></a></li>
+                    <li class="nav-item"><a href="#philosophy" class="nav-link">Journal <span class="nav-arrow">▾</span></a></li>
+                    <li class="nav-item"><a href="#book" class="nav-link">Contact</a></li>
+                </ul>
+
+                <!-- Center: Brand Logo -->
+                <a href="#hero" class="site-logo">
+                    <span class="logo-badge-icon" aria-hidden="true"></span>
+                    <span>Dynamic Clinic</span>
+                </a>
+
+                <!-- Right: Appointment CTA Button -->
+                <a href="#book" class="btn-nav-appointment">
+                    <span class="btn-arrow-circle" aria-hidden="true"></span>
+                    <span>Book Appointment</span>
+                </a>
+
+                <!-- Mobile Hamburger Toggle (right on mobile) -->
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+
+        <!-- 1. Hero Section — wrapped in inset card (Dermato border style) -->
+        <div class="hero-wrapper" id="hero">
+        <section class="hero-section">
+            <!-- Ambient Background Backdrop -->
+            <div class="hero-backdrop" style="background-image: url('assets/images/hero-bg.jpg');"></div>
+            <div class="hero-overlay"></div>
+
+            <!-- The Infinite Curved Arc Orbit Cards Stage -->
+            <div class="hero-orbit-stage" aria-label="Interactive Treatment Showcase Carousel">
+                <div class="orbit-cards-track">
+                    <div class="orbit-card" data-index="0">
+                        <img src="assets/images/card-facial.jpg" alt="Hydra-Facial Glow" loading="eager">
+                        <span class="orbit-card-tag">Hydra-Facial Glow</span>
+                    </div>
+                    <div class="orbit-card" data-index="1">
+                        <img src="assets/images/card-hair.jpg" alt="Botanical Hair Spa" loading="eager">
+                        <span class="orbit-card-tag">Botanical Hair Spa</span>
+                    </div>
+                    <div class="orbit-card" data-index="2">
+                        <img src="assets/images/card-massage.jpg" alt="Hot Stone Ritual" loading="eager">
+                        <span class="orbit-card-tag">Hot Stone Ritual</span>
+                    </div>
+                    <div class="orbit-card" data-index="3">
+                        <img src="assets/images/card-skincare.jpg" alt="Botanical Elixirs" loading="eager">
+                        <span class="orbit-card-tag">Botanical Elixirs</span>
+                    </div>
+                    <div class="orbit-card" data-index="4">
+                        <img src="assets/images/card-glow.jpg" alt="Radiance Facial" loading="eager">
+                        <span class="orbit-card-tag">Radiance Facial</span>
+                    </div>
+                    <div class="orbit-card" data-index="5">
+                        <img src="assets/images/card-facial.jpg" alt="Clinical Peel" loading="eager">
+                        <span class="orbit-card-tag">Clinical Peel</span>
+                    </div>
+                    <div class="orbit-card" data-index="6">
+                        <img src="assets/images/card-massage.jpg" alt="Deep Aromatherapy" loading="eager">
+                        <span class="orbit-card-tag">Deep Aromatherapy</span>
+                    </div>
+                    <div class="orbit-card" data-index="7">
+                        <img src="assets/images/card-hair.jpg" alt="Scalp Therapy" loading="eager">
+                        <span class="orbit-card-tag">Scalp Therapy</span>
+                    </div>
+                    <div class="orbit-card" data-index="8">
+                        <img src="assets/images/card-skincare.jpg" alt="Cellular Serum" loading="eager">
+                        <span class="orbit-card-tag">Cellular Serum</span>
+                    </div>
+                    <div class="orbit-card" data-index="9">
+                        <img src="assets/images/card-glow.jpg" alt="Dewy Glow Therapy" loading="eager">
+                        <span class="orbit-card-tag">Dewy Glow Therapy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Hero Editorial Content -->
+            <div class="hero-center-content">
+                <!-- Eyebrow Pill Badge -->
+                <div class="hero-badge-pill">
+                    <span class="pill-dot" aria-hidden="true"></span>
+                    <span>Leading Aesthetic & Plastic Surgery Clinic in Dubai
+
+                    </span>
+                </div>
+
+                <!-- Hero Headline -->
+                <h1 class="hero-title">Welcome to
+                    Dynamic Life Clinics</h1>
+
+                <!-- Subtitle -->
+                <p class="hero-subtitle">Previously Named As Dynamic Aesthetic Clinic
+
+                    .</p>
+
+                <!-- CTA Pill Button -->
+                <a href="#book" class="btn-hero-primary">
+                    <span class="btn-arrow-circle" aria-hidden="true">➔</span>
+                    <span>BOOK APPOINTMENT</span>
+                </a>
+            </div>
+        </section>
+        </div><!-- /.hero-wrapper -->
+
+        <!-- 2. On-Scroll Text Color Fill (Philosophy Section) -->
+        <section class="section-scroll-reveal" id="philosophy">
+            <div class="reveal-inner">
+
+                <div class="reveal-eyebrow">
+                    <span>PHILOSOPHY & CLINICAL ARTISTRY</span>
+                </div>
+
+                <!-- The On-Scroll Word Color Fill Headline -->
+                <h2 class="scroll-fill-headline" data-scroll="text-fill">
+                    Where clinical dermatology merges with bespoke aesthetic ritual to awaken the natural brilliance of
+                    your skin.
+                </h2>
+
+                <!-- Trust & Excellence Metrics -->
+                <div class="reveal-stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Years of Clinical Mastery</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.4%</span>
+                        <span class="stat-label">Client Radiance Satisfaction</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Personalized Skincare Protocols</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. Bespoke Treatments Stacked Cards (React-Style Scroll Stack Animation) -->
+        <section class="section-treatments-stack" id="services">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="treatments-header">
+                    <div class="treatments-badge-pill">
+                        <span class="pill-dot" aria-hidden="true"></span>
+                        <span>SIGNATURE SERVICES</span>
+                    </div>
+                    <div class="treatments-header-content">
+                        <h2 class="treatments-headline">Bespoke Treatments<br>Crafted for Your Well-<br>being</h2>
+                        <p class="treatments-lead">Immerse yourself in our premium collection of curated treatments designed to restore balance, harmony, and natural beauty.</p>
+                    </div>
+                </div>
+
+                <!-- Scroll Stack Deck Container -->
+                <div class="treatments-stack-container" id="treatments-stack">
+
+                    <!-- Treatment Card 1: Scalp Wash & Hydro-Therapy -->
+                    <article class="treatment-stack-card" style="--card-index: 0;">
+                        <div class="treatment-card-grid">
+                            <div class="treatment-media-wrap">
+                                <img src="assets/images/treatment-scalp.jpg" alt="Scalp Wash & Hydro-Therapy" loading="lazy">
+                            </div>
+                            <div class="treatment-content-wrap">
+                                <h3 class="treatment-name">Scalp Wash &amp; Hydro-Therapy</h3>
+                                <p class="treatment-summary">Experience the ultimate hair-washing ritual, incorporating deep-cleansing scalp massage, specialized steam treatment, and customized conditioning.</p>
+
+                                <div class="treatment-features-section">
+                                    <span class="features-label">CORE FEATURES</span>
+                                    <div class="features-grid">
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/><path d="M17.8 11.8L19 13"/><path d="M15 9h0"/><path d="M17.8 6.2L19 5"/><path d="M3 21l9-9"/></svg>
+                                            </span>
+                                            <span>Scalp condition assessment</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                                            </span>
+                                            <span>Steam activation &amp; deep mask</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                                            </span>
+                                            <span>Temperature-controlled hydro wash</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+                                            </span>
+                                            <span>Pressure-point scalp massage</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-card-footer">
+                                    <div class="treatment-overview-meta">
+                                        <img src="assets/images/avatar-therapist.jpg" alt="Senior Aesthetician" class="overview-avatar" loading="lazy">
+                                        <div class="overview-text">
+                                            <span class="overview-title">Treatment Overview</span>
+                                            <span class="overview-subtitle">Learn More About This Treatment</span>
+                                        </div>
+                                    </div>
+                                    <a href="#book" class="btn-view-service">
+                                        <span>VIEW SERVICE</span>
+                                        <span class="service-arrow-circle" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Treatment Card 2: Luxury Nail Artistry -->
+                    <article class="treatment-stack-card" style="--card-index: 1;">
+                        <div class="treatment-card-grid">
+                            <div class="treatment-media-wrap">
+                                <img src="assets/images/treatment-nails.jpg" alt="Luxury Nail Artistry" loading="lazy">
+                            </div>
+                            <div class="treatment-content-wrap">
+                                <h3 class="treatment-name">Luxury Nail Artistry</h3>
+                                <p class="treatment-summary">Indulge in a premium manicure session featuring organic scrubs, meticulous cuticle care, and non-toxic, long-lasting gel polishes.</p>
+
+                                <div class="treatment-features-section">
+                                    <span class="features-label">CORE FEATURES</span>
+                                    <div class="features-grid">
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13a7 7 0 0 1 7-7c4.5 0 9 2.5 9 14-4 0-7.5-1-9-0z"/><path d="M4 13a9.6 9.6 0 0 0 7 7"/></svg>
+                                            </span>
+                                            <span>Organic herbal soak &amp; scrub</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                                            </span>
+                                            <span>Precision cuticle refinement</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3H9zM10 6v3h4V6M7 9h10l-1 12H8L7 9z"/></svg>
+                                            </span>
+                                            <span>Non-toxic restorative gel artistry</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+                                            </span>
+                                            <span>Pressure-point hand &amp; arm massage</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-card-footer">
+                                    <div class="treatment-overview-meta">
+                                        <img src="assets/images/avatar-therapist.jpg" alt="Senior Aesthetician" class="overview-avatar" loading="lazy">
+                                        <div class="overview-text">
+                                            <span class="overview-title">Treatment Overview</span>
+                                            <span class="overview-subtitle">Learn More About This Treatment</span>
+                                        </div>
+                                    </div>
+                                    <a href="#book" class="btn-view-service">
+                                        <span>VIEW SERVICE</span>
+                                        <span class="service-arrow-circle" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Treatment Card 3: Hydra-Infusion Glow Therapy -->
+                    <article class="treatment-stack-card" style="--card-index: 2;">
+                        <div class="treatment-card-grid">
+                            <div class="treatment-media-wrap">
+                                <img src="assets/images/treatment-facial.jpg" alt="Hydra-Infusion Glow Therapy" loading="lazy">
+                            </div>
+                            <div class="treatment-content-wrap">
+                                <h3 class="treatment-name">Hydra-Infusion Glow Therapy</h3>
+                                <p class="treatment-summary">Deep pore purification combined with pressurized hyaluronic acid infusion to dramatically enhance skin barrier elasticity and radiant plumpness.</p>
+
+                                <div class="treatment-features-section">
+                                    <span class="features-label">CORE FEATURES</span>
+                                    <div class="features-grid">
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 1 0 10 10"/></svg>
+                                            </span>
+                                            <span>Vortex deep-pore purification</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                                            </span>
+                                            <span>Pressurized hyaluronic infusion</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                            </span>
+                                            <span>Cellular lipid barrier renewal</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+                                            </span>
+                                            <span>Cryo-firming cold globe sculpting</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-card-footer">
+                                    <div class="treatment-overview-meta">
+                                        <img src="assets/images/avatar-therapist.jpg" alt="Senior Aesthetician" class="overview-avatar" loading="lazy">
+                                        <div class="overview-text">
+                                            <span class="overview-title">Treatment Overview</span>
+                                            <span class="overview-subtitle">Learn More About This Treatment</span>
+                                        </div>
+                                    </div>
+                                    <a href="#book" class="btn-view-service">
+                                        <span>VIEW SERVICE</span>
+                                        <span class="service-arrow-circle" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Treatment Card 4: Volcanic Stone Restorative Massage -->
+                    <article class="treatment-stack-card" style="--card-index: 3;">
+                        <div class="treatment-card-grid">
+                            <div class="treatment-media-wrap">
+                                <img src="assets/images/card-massage.jpg" alt="Volcanic Stone Restorative Massage" loading="lazy">
+                            </div>
+                            <div class="treatment-content-wrap">
+                                <h3 class="treatment-name">Volcanic Stone Restorative Massage</h3>
+                                <p class="treatment-summary">Basalt heated stones combined with pure artisanal botanical balms to relieve deep structural tension and promote restorative circulation.</p>
+
+                                <div class="treatment-features-section">
+                                    <span class="features-label">CORE FEATURES</span>
+                                    <div class="features-grid">
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="14" rx="8" ry="5"/><ellipse cx="12" cy="8" rx="5" ry="3"/></svg>
+                                            </span>
+                                            <span>Heated basalt volcanic stones</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                                            </span>
+                                            <span>Artisanal botanical elixir oils</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                            </span>
+                                            <span>Deep neuromuscular release</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-icon-wrap" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+                                            </span>
+                                            <span>Pressure-point muscular alignment</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-card-footer">
+                                    <div class="treatment-overview-meta">
+                                        <img src="assets/images/avatar-therapist.jpg" alt="Senior Aesthetician" class="overview-avatar" loading="lazy">
+                                        <div class="overview-text">
+                                            <span class="overview-title">Treatment Overview</span>
+                                            <span class="overview-subtitle">Learn More About This Treatment</span>
+                                        </div>
+                                    </div>
+                                    <a href="#book" class="btn-view-service">
+                                        <span>VIEW SERVICE</span>
+                                        <span class="service-arrow-circle" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div><!-- /.treatments-stack-container -->
+
+            </div>
+        </section>
+
+        <!-- 4. Before & After Results Gallery -->
+        <section class="section-results" id="results" aria-labelledby="results-title">
+            <div class="container">
+                <div class="results-proof">
+                    <div class="results-heading">
+                        <div>
+                            <span class="section-tag section-tag--light">Visual Proof</span>
+                            <h2 class="results-title" id="results-title">Before <em>&amp;</em> After</h2>
+                        </div>
+                        <div class="results-tags" aria-label="Treatment result categories">
+                            <span>[ Brightening &amp; Glow ]</span>
+                            <span>[ Texture Refinement ]</span>
+                            <span>[ Hair Restoration ]</span>
+                            <span>[ Hydration &amp; Plumpness ]</span>
+                        </div>
+                    </div>
+                    <div class="results-media" aria-label="Treatment results image gallery">
+                        <figure class="results-card results-card--1 results-card--focus"><div class="results-flip-card"><div class="results-flip-face results-flip-face--front"><img src="assets/images/card-facial.jpg" alt="Facial treatment result" class="results-focus-front"></div><div class="results-flip-face results-flip-face--back"><img src="assets/images/card-skincare.jpg" alt="" class="results-focus-back"></div></div></figure>
+                        <figure class="results-card results-card--2"><img src="assets/images/card-skincare.jpg" alt="Skincare treatment result" loading="lazy"></figure>
+                        <figure class="results-card results-card--3"><img src="assets/images/card-glow.jpg" alt="Radiance treatment result" loading="lazy"></figure>
+                        <figure class="results-card results-card--4"><img src="assets/images/card-hair.jpg" alt="Hair treatment result" loading="lazy"></figure>
+                        <figure class="results-card results-card--5"><img src="assets/images/card-massage.jpg" alt="Wellness treatment result" loading="lazy"></figure>
+                    </div>
+                    <div class="results-action"><a href="#book" class="results-link"><span>Begin Your Transformation</span><span aria-hidden="true">&#8594;</span></a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Luxury Private Booking CTA -->
+        <section class="section-cta" id="book">
+            <div class="container-narrow">
+                <div class="cta-banner">
+                    <h2 class="cta-title">Begin Your Skin Journey</h2>
+                    <p class="cta-subtitle">
+                        Schedule an in-depth private consultation with our senior aesthetic clinicians. Tailored
+                        exclusively to your dermal profile.
+                    </p>
+                    <a href="#contact" class="btn-hero-primary">
+                        <span class="btn-arrow-circle" aria-hidden="true">➔</span>
+                        <span>Schedule Private Appointment</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer — Glowence Style -->
+    <footer class="site-footer" id="contact">
+
+        <!-- Top Links Grid -->
+        <div class="footer-grid-wrap">
+            <div class="footer-col">
+                <h4 class="footer-col-heading">Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#philosophy">About</a></li>
+                    <li><a href="#book">Pricing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-heading">Company Info</h4>
+                <ul class="footer-links">
+                    <li><a href="#philosophy">About Us</a></li>
+                    <li><a href="#book">Blog</a></li>
+                    <li><a href="#book">Book Appointment</a></li>
+                    <li><a href="#book">Enroll in a Course</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-heading">Treatments</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Skin Rejuvenation</a></li>
+                    <li><a href="#services">Hair Therapy</a></li>
+                    <li><a href="#services">Body Wellness</a></li>
+                    <li><a href="#services">Laser Clinic</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-col--about">
+                <h4 class="footer-col-heading">About</h4>
+                <p class="footer-about-text">At Dynamic Clinic, we blend botanical care with modern technique to create hair, skin and wellness rituals that leave every guest feeling calm, confident and completely themselves.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-heading">Social</h4>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-btn" aria-label="Instagram">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" class="footer-social-btn" aria-label="Facebook">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="footer-social-btn" aria-label="TikTok">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Bar -->
+        <div class="footer-copy-bar">
+            <span>&copy; Copyright &ndash; Dynamic Clinic &nbsp;|&nbsp; Designed for high-end aesthetic medicine &nbsp;|&nbsp; All Rights Reserved</span>
+        </div>
+
+        <!-- Giant Brand Display Name -->
+        <div class="footer-display-brand" aria-hidden="true">
+            <span class="footer-display-text">DYNAMIC CLINIC</span><span class="footer-display-dot">.</span>
+        </div>
+
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/orbit-carousel.js"></script>
+    <script src="assets/js/scroll-animations.js"></script>
+    <script src="assets/js/before-after-gallery.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
