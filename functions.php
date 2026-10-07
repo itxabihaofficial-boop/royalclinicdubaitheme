@@ -12,6 +12,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'DYNAMIC_CLINIC_VERSION', '1.0.0' );
 define( 'DYNAMIC_CLINIC_DIR', get_template_directory() );
 define( 'DYNAMIC_CLINIC_URI', get_template_directory_uri() );
+/**
+ * Keep field-group JSON with the theme so settings can be versioned and moved
+ * with a theme import. Programmatic fields remain the fallback for all setups.
+ */
+function dynamic_clinic_acf_json_save_point( $path ) {
+    return DYNAMIC_CLINIC_DIR . '/inc/acf-json';
+}
+add_filter( 'acf/settings/save_json', 'dynamic_clinic_acf_json_save_point' );
+
+function dynamic_clinic_acf_json_load_point( $paths ) {
+    $paths[] = DYNAMIC_CLINIC_DIR . '/inc/acf-json';
+    return array_unique( $paths );
+}
+add_filter( 'acf/settings/load_json', 'dynamic_clinic_acf_json_load_point' );
+/**
+ * Read an ACF field with a safe fallback when ACF is inactive or the field is empty.
+ */
+function dynamic_clinic_field( $field_name, $fallback = '', $context = false ) {
+    if ( ! function_exists( 'get_field' ) ) {
+        return $fallback;
+    }
+
+    $value = false === $context ? get_field( $field_name ) : get_field( $field_name, $context );
+    return ( null === $value || false === $value || '' === $value ) ? $fallback : $value;
+}
+
+/**
+ * Resolve ACF image values returned as an attachment ID, array, or URL.
+ */
+function dynamic_clinic_image_url( $image, $fallback = '' ) {
+    if ( is_array( $image ) && ! empty( $image['url'] ) ) {
+        return $image['url'];
+    }
+    if ( is_numeric( $image ) ) {
+        $url = wp_get_attachment_image_url( (int) $image, 'full' );
+        return $url ? $url : $fallback;
+    }
+    return is_string( $image ) && '' !== $image ? $image : $fallback;
+}
+
+/**
+ * Resolve ACF link values returned as a Link field array or URL string.
+ */
+function dynamic_clinic_link_url( $link, $fallback = '#' ) {
+    if ( is_array( $link ) && ! empty( $link['url'] ) ) {
+        return $link['url'];
+    }
+    return is_string( $link ) && '' !== $link ? $link : $fallback;
+}
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -97,6 +146,9 @@ function dynamic_clinic_scripts() {
         $custom_primary = get_field( 'brand_primary_color', 'option' );
         $custom_accent  = get_field( 'brand_accent_color', 'option' );
         $custom_bg      = get_field( 'brand_dark_color', 'option' );
+        $custom_page_bg = get_field( 'brand_page_background_color', 'option' );
+        $custom_sand    = get_field( 'brand_light_sand_color', 'option' );
+        $custom_text    = get_field( 'brand_text_color', 'option' );
 
         $inline_css = ':root {';
         if ( ! empty( $custom_primary ) ) {
@@ -107,8 +159,12 @@ function dynamic_clinic_scripts() {
             $inline_css .= '--color-accent-gold: ' . esc_attr( $custom_accent ) . ';';
         }
         if ( ! empty( $custom_bg ) ) {
+            $inline_css .= '--color-espresso-dark: ' . esc_attr( $custom_bg ) . ';';
             $inline_css .= '--bg-body: ' . esc_attr( $custom_bg ) . ';';
         }
+        if ( $custom_page_bg = sanitize_hex_color( $custom_page_bg ) ) { $inline_css .= '--color-page-bg: ' . $custom_page_bg . ';'; }
+        if ( $custom_sand = sanitize_hex_color( $custom_sand ) ) { $inline_css .= '--color-light-sand: ' . $custom_sand . ';'; }
+        if ( $custom_text = sanitize_hex_color( $custom_text ) ) { $inline_css .= '--color-espresso: ' . $custom_text . ';'; }
         $inline_css .= '}';
 
         wp_add_inline_style( 'dynamic-clinic-tokens', $inline_css );

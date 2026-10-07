@@ -15,6 +15,17 @@ $results = array(
     array( 'image' => $theme_uri . '/assets/images/card-hair.jpg',     'alt' => 'Hair treatment result' ),
     array( 'image' => $theme_uri . '/assets/images/card-massage.jpg',  'alt' => 'Wellness treatment result' ),
 );
+
+$acf_results = dynamic_clinic_field( 'results_gallery', array() );
+if ( is_array( $acf_results ) && ! empty( $acf_results ) ) {
+    $results = array();
+    foreach ( $acf_results as $image ) {
+        $results[] = array(
+            'image' => dynamic_clinic_image_url( $image ),
+            'alt'   => is_array( $image ) && ! empty( $image['alt'] ) ? $image['alt'] : 'Treatment result',
+        );
+    }
+}
 ?>
 
 <section class="section-results" id="results" aria-labelledby="results-title">
@@ -22,8 +33,8 @@ $results = array(
         <div class="results-proof">
             <div class="results-heading">
                 <div>
-                    <span class="section-tag section-tag--light">Visual Proof</span>
-                    <h2 class="results-title" id="results-title">Before <em>&amp;</em> After</h2>
+                    <span class="section-tag section-tag--light"><?php echo esc_html( dynamic_clinic_field( 'results_badge', 'Visual Proof' ) ); ?></span>
+                    <h2 class="results-title" id="results-title"><?php echo wp_kses_post( str_replace( '&', '<em>&amp;</em>', dynamic_clinic_field( 'results_title', 'Before & After' ) ) ); ?></h2>
                 </div>
 
                 <div class="results-tags" aria-label="Treatment result categories">
@@ -43,7 +54,7 @@ $results = array(
                                     <img src="<?php echo esc_url( $result['image'] ); ?>" alt="<?php echo esc_attr( $result['alt'] ); ?>" class="results-focus-front">
                                 </div>
                                 <div class="results-flip-face results-flip-face--back">
-                                    <img src="<?php echo esc_url( $results[1]['image'] ); ?>" alt="" class="results-focus-back">
+                                    <img src="<?php echo esc_url( ( isset( $results[1] ) ? $results[1]['image'] : $results[0]['image'] ) ); ?>" alt="" class="results-focus-back">
                                 </div>
                             </div>
                         <?php else : ?>
@@ -55,7 +66,7 @@ $results = array(
 
             <div class="results-action">
                 <a href="#book" class="results-link">
-                    <span>Begin Your Transformation</span>
+                    <span><?php echo esc_html( dynamic_clinic_field( 'results_cta_text', 'Begin Your Transformation' ) ); ?></span>
                     <span aria-hidden="true">&#8594;</span>
                 </a>
             </div>

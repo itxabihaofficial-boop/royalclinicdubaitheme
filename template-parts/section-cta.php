@@ -10,15 +10,20 @@ $clinic_phone = function_exists( 'get_field' ) ? get_field( 'clinic_phone', 'opt
 $clinic_email = function_exists( 'get_field' ) ? get_field( 'clinic_email', 'option' ) : '';
 $clinic_phone = $clinic_phone ?: '+971 4 123 4567';
 $clinic_email = $clinic_email ?: 'concierge@dynamicclinic.com';
+$booking_eyebrow = dynamic_clinic_field( 'booking_eyebrow', 'Private consultation' );
+$booking_title = dynamic_clinic_field( 'booking_title', 'Request an appointment' );
+$booking_intro = dynamic_clinic_field( 'booking_intro', 'Tell us a little about your goals and our concierge team will contact you shortly.' );
+$booking_image = dynamic_clinic_image_url( dynamic_clinic_field( 'booking_image', '' ), $theme_uri . '/assets/images/card-glow.jpg' );
+$booking_inquiries_heading = dynamic_clinic_field( 'booking_inquiries_heading', 'General inquiries' );
 ?>
 
 <section class="section-booking-request" id="book" aria-labelledby="booking-request-title">
     <div class="container">
         <div class="booking-request">
             <div class="booking-form-panel">
-                <span class="booking-eyebrow">Private consultation</span>
-                <h2 id="booking-request-title">Request an appointment</h2>
-                <p>Tell us a little about your goals and our concierge team will contact you shortly.</p>
+                <span class="booking-eyebrow"><?php echo esc_html( $booking_eyebrow ); ?></span>
+                <h2 id="booking-request-title"><?php echo esc_html( $booking_title ); ?></h2>
+                <p><?php echo esc_html( $booking_intro ); ?></p>
 
                 <form class="booking-form" action="#book" method="post">
                     <div class="booking-form-grid">
@@ -34,10 +39,10 @@ $clinic_email = $clinic_email ?: 'concierge@dynamicclinic.com';
             </div>
 
             <aside class="booking-visual" aria-label="Dynamic Clinic consultation">
-                <img src="<?php echo esc_url( $theme_uri . '/assets/images/card-glow.jpg' ); ?>" alt="Radiant skin treatment detail" loading="lazy">
+                <img src="<?php echo esc_url( $booking_image ); ?>" alt="Radiant skin treatment detail" loading="lazy">
                 <div class="booking-contact-card">
                     <span aria-hidden="true" class="booking-contact-mark">&#10022;</span>
-                    <h3>General inquiries</h3>
+                    <h3><?php echo esc_html( $booking_inquiries_heading ); ?></h3>
                     <a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $clinic_phone ) ); ?>"><?php echo esc_html( $clinic_phone ); ?></a>
                     <a href="mailto:<?php echo esc_attr( $clinic_email ); ?>"><?php echo esc_html( $clinic_email ); ?></a>
                 </div>

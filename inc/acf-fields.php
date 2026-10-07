@@ -182,7 +182,48 @@ function dynamic_clinic_register_acf_fields() {
         ),
     ) );
 
-    // 3. Global Clinic Settings & Color Customizer (Options Page)
+    // 3. Remaining homepage content. Repeaters keep every repeated card editable.
+    acf_add_local_field_group( array(
+        'key' => 'group_homepage_content_sections',
+        'title' => 'Homepage Content Sections',
+        'fields' => array(
+            array( 'key' => 'field_services_badge', 'label' => 'Services eyebrow', 'name' => 'services_badge_text', 'type' => 'text', 'default_value' => 'SIGNATURE SERVICES' ),
+            array( 'key' => 'field_services_headline', 'label' => 'Services headline', 'name' => 'services_headline', 'type' => 'textarea', 'new_lines' => 'br', 'default_value' => 'Bespoke Treatments<br>Crafted for Your Well-<br>being' ),
+            array( 'key' => 'field_services_lead', 'label' => 'Services introduction', 'name' => 'services_lead', 'type' => 'textarea', 'default_value' => 'Immerse yourself in our premium collection of curated aesthetic procedures designed to restore balance, harmony, and natural beauty.' ),
+            array( 'key' => 'field_services_items', 'label' => 'Service cards', 'name' => 'services_items', 'type' => 'repeater', 'layout' => 'block', 'button_label' => 'Add service', 'sub_fields' => array(
+                array( 'key' => 'field_service_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ),
+                array( 'key' => 'field_service_description', 'label' => 'Description', 'name' => 'description', 'type' => 'textarea' ),
+                array( 'key' => 'field_service_image', 'label' => 'Image', 'name' => 'image', 'type' => 'image', 'return_format' => 'array' ),
+                array( 'key' => 'field_service_link', 'label' => 'Link', 'name' => 'link', 'type' => 'link' ),
+                array( 'key' => 'field_service_doctor', 'label' => 'Clinician label', 'name' => 'doctor', 'type' => 'text' ),
+                array( 'key' => 'field_service_features', 'label' => 'Features (one per line)', 'name' => 'features', 'type' => 'textarea' ),
+            ) ),
+            array( 'key' => 'field_results_badge', 'label' => 'Results eyebrow', 'name' => 'results_badge', 'type' => 'text', 'default_value' => 'Visual Proof' ),
+            array( 'key' => 'field_results_title', 'label' => 'Results title', 'name' => 'results_title', 'type' => 'text', 'default_value' => 'Before & After' ),
+            array( 'key' => 'field_results_tags', 'label' => 'Result categories (one per line)', 'name' => 'results_tags', 'type' => 'textarea' ),
+            array( 'key' => 'field_results_gallery', 'label' => 'Results gallery', 'name' => 'results_gallery', 'type' => 'gallery', 'return_format' => 'array' ),
+            array( 'key' => 'field_results_cta_text', 'label' => 'Results button text', 'name' => 'results_cta_text', 'type' => 'text', 'default_value' => 'Begin Your Transformation' ),
+            array( 'key' => 'field_results_cta_link', 'label' => 'Results button link', 'name' => 'results_cta_link', 'type' => 'link' ),
+            array( 'key' => 'field_specialists_eyebrow', 'label' => 'Specialists eyebrow', 'name' => 'specialists_eyebrow', 'type' => 'text' ),
+            array( 'key' => 'field_specialists_title', 'label' => 'Specialists title', 'name' => 'specialists_title', 'type' => 'text' ),
+            array( 'key' => 'field_specialists_lead', 'label' => 'Specialists introduction', 'name' => 'specialists_lead', 'type' => 'textarea' ),
+            array( 'key' => 'field_specialists_items', 'label' => 'Specialist cards', 'name' => 'specialists_items', 'type' => 'repeater', 'layout' => 'block', 'button_label' => 'Add specialist', 'sub_fields' => array(
+                array( 'key' => 'field_specialist_service', 'label' => 'Service', 'name' => 'service', 'type' => 'text' ), array( 'key' => 'field_specialist_summary', 'label' => 'Summary', 'name' => 'summary', 'type' => 'textarea' ), array( 'key' => 'field_specialist_name', 'label' => 'Name', 'name' => 'name', 'type' => 'text' ), array( 'key' => 'field_specialist_role', 'label' => 'Role', 'name' => 'role', 'type' => 'text' ), array( 'key' => 'field_specialist_image', 'label' => 'Photo', 'name' => 'image', 'type' => 'image', 'return_format' => 'array' ), array( 'key' => 'field_specialist_facts', 'label' => 'Facts (one per line)', 'name' => 'facts', 'type' => 'textarea' ),
+            ) ),
+            array( 'key' => 'field_testimonials_eyebrow', 'label' => 'Testimonials eyebrow', 'name' => 'testimonials_eyebrow', 'type' => 'text' ), array( 'key' => 'field_testimonials_title', 'label' => 'Testimonials title', 'name' => 'testimonials_title', 'type' => 'text' ),
+            array( 'key' => 'field_testimonial_items', 'label' => 'Testimonials', 'name' => 'testimonial_items', 'type' => 'repeater', 'layout' => 'table', 'button_label' => 'Add testimonial', 'sub_fields' => array(
+                array( 'key' => 'field_testimonial_quote', 'label' => 'Quote', 'name' => 'quote', 'type' => 'textarea' ), array( 'key' => 'field_testimonial_name', 'label' => 'Name', 'name' => 'name', 'type' => 'text' ), array( 'key' => 'field_testimonial_role', 'label' => 'Role', 'name' => 'role', 'type' => 'text' ), array( 'key' => 'field_testimonial_image', 'label' => 'Image', 'name' => 'image', 'type' => 'image', 'return_format' => 'array' ),
+            ) ),
+            array( 'key' => 'field_insights_eyebrow', 'label' => 'Insights eyebrow', 'name' => 'insights_eyebrow', 'type' => 'text' ), array( 'key' => 'field_insights_title', 'label' => 'Insights title', 'name' => 'insights_title', 'type' => 'text' ), array( 'key' => 'field_insights_lead', 'label' => 'Insights introduction', 'name' => 'insights_lead', 'type' => 'textarea' ),
+            array( 'key' => 'field_insights_items', 'label' => 'Insight articles', 'name' => 'insights_items', 'type' => 'repeater', 'layout' => 'table', 'button_label' => 'Add article', 'sub_fields' => array(
+                array( 'key' => 'field_insight_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ), array( 'key' => 'field_insight_category', 'label' => 'Category', 'name' => 'category', 'type' => 'text' ), array( 'key' => 'field_insight_date', 'label' => 'Date', 'name' => 'date', 'type' => 'date_picker', 'return_format' => 'M j, Y' ), array( 'key' => 'field_insight_image', 'label' => 'Image', 'name' => 'image', 'type' => 'image', 'return_format' => 'array' ), array( 'key' => 'field_insight_link', 'label' => 'Article link', 'name' => 'link', 'type' => 'link' ),
+            ) ),
+            array( 'key' => 'field_booking_eyebrow', 'label' => 'Booking eyebrow', 'name' => 'booking_eyebrow', 'type' => 'text' ), array( 'key' => 'field_booking_title', 'label' => 'Booking title', 'name' => 'booking_title', 'type' => 'text' ), array( 'key' => 'field_booking_intro', 'label' => 'Booking introduction', 'name' => 'booking_intro', 'type' => 'textarea' ), array( 'key' => 'field_booking_image', 'label' => 'Booking image', 'name' => 'booking_image', 'type' => 'image', 'return_format' => 'array' ), array( 'key' => 'field_booking_inquiries_heading', 'label' => 'Contact-card heading', 'name' => 'booking_inquiries_heading', 'type' => 'text' ),
+        ),
+        'location' => array( array( array( 'param' => 'page_type', 'operator' => '==', 'value' => 'front_page' ) ) ),
+        'position' => 'normal', 'style' => 'default', 'label_placement' => 'top',
+    ) );
+    // 4. Global Clinic Settings & Color Customizer (Options Page)
     acf_add_local_field_group( array(
         'key' => 'group_global_clinic_options',
         'title' => 'Global Brand & Clinic Settings',
@@ -207,6 +248,27 @@ function dynamic_clinic_register_acf_fields() {
                 'name' => 'brand_dark_color',
                 'type' => 'color_picker',
                 'default_value' => '#101011',
+            ),
+            array(
+                'key' => 'field_opt_page_background_color',
+                'label' => 'Page Background Color',
+                'name' => 'brand_page_background_color',
+                'type' => 'color_picker',
+                'default_value' => '#fdf7ef',
+            ),
+            array(
+                'key' => 'field_opt_light_sand_color',
+                'label' => 'Light Sand Surface Color',
+                'name' => 'brand_light_sand_color',
+                'type' => 'color_picker',
+                'default_value' => '#f7ecdf',
+            ),
+            array(
+                'key' => 'field_opt_text_color',
+                'label' => 'Primary Text Color',
+                'name' => 'brand_text_color',
+                'type' => 'color_picker',
+                'default_value' => '#633b2c',
             ),
             array(
                 'key' => 'field_opt_clinic_name',

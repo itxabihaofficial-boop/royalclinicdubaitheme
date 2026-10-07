@@ -117,11 +117,11 @@ $treatments = array(
         <div class="treatments-header">
             <div class="treatments-badge-pill">
                 <span class="pill-dot" aria-hidden="true"></span>
-                <span><?php echo esc_html( get_field('services_badge_text') ?: 'SIGNATURE SERVICES' ); ?></span>
+                <span><?php echo esc_html( dynamic_clinic_field( 'services_badge_text', 'SIGNATURE SERVICES' ) ); ?></span>
             </div>
             <div class="treatments-header-content">
-                <h2 class="treatments-headline"><?php echo wp_kses_post( get_field('services_headline') ?: 'Bespoke Treatments<br>Crafted for Your Well-<br>being' ); ?></h2>
-                <p class="treatments-lead"><?php echo esc_html( get_field('services_lead') ?: 'Immerse yourself in our premium collection of curated aesthetic procedures designed to restore balance, harmony, and natural beauty.' ); ?></p>
+                <h2 class="treatments-headline"><?php echo wp_kses_post( dynamic_clinic_field( 'services_headline', 'Bespoke Treatments<br>Crafted for Your Well-<br>being' ) ); ?></h2>
+                <p class="treatments-lead"><?php echo esc_html( dynamic_clinic_field( 'services_lead', 'Immerse yourself in our premium collection of curated aesthetic procedures designed to restore balance, harmony, and natural beauty.' ) ); ?></p>
             </div>
         </div>
 
