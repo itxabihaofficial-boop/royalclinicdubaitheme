@@ -92,7 +92,7 @@ if ( empty($orbit_cards) ) {
 
         <!-- CTA Pill Button -->
         <a href="<?php echo esc_url($hero_cta_link); ?>" class="btn-hero-primary">
-            <span class="btn-arrow-circle" aria-hidden="true">➔</span>
+            <span class="btn-arrow-circle" aria-hidden="true">&rarr;</span>
             <span><?php echo esc_html($hero_cta_text); ?></span>
         </a>
     </div>

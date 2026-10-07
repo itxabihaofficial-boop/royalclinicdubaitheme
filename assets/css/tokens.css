@@ -232,9 +232,9 @@
   --space-2xl: 5rem;
   --space-3xl: 7.5rem;
 
-  --container-max: 1360px;
-  --container-narrow: 980px;
-  --gutter: clamp(1rem, 3vw, 2.5rem);
+  --container-max: 1760px;
+  --container-narrow: 1180px;
+  --gutter: clamp(1rem, 2vw, 2rem);
 
   /* ==========================================================================
      Border Radii

@@ -26,7 +26,19 @@ get_header();
     <!-- 4. Before & After Results Gallery -->
     <?php get_template_part( 'template-parts/section-results' ); ?>
 
-    <!-- 5. Luxury Private Booking CTA -->
+    <!-- 5. Clinical Specialists Directory -->
+    <?php get_template_part( 'template-parts/section-specialists' ); ?>
+
+    <!-- 6. Why Patients Choose Us -->
+    <?php get_template_part( 'template-parts/section-why-clinic' ); ?>
+
+    <!-- 7. Patient Testimonials -->
+    <?php get_template_part( 'template-parts/section-testimonials' ); ?>
+
+    <!-- 8. Skin Insights -->
+    <?php get_template_part( 'template-parts/section-insights' ); ?>
+
+    <!-- 9. Appointment Request -->
     <?php get_template_part( 'template-parts/section-cta' ); ?>
 
 </main>

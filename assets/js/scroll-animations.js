@@ -96,7 +96,7 @@ function initScrollTextFill() {
 }
 
 /**
- * Header scroll — adds/removes .scrolled class so CSS tokens handle appearance
+ * Header scroll â€” adds/removes .scrolled class so CSS tokens handle appearance
  */
 function initHeaderScroll() {
   const header = document.querySelector('.site-header');
@@ -115,10 +115,11 @@ function initHeaderScroll() {
 }
 
 /**
- * React-Style Scroll Stack Cards Animation (Framer Motion / GSAP ScrollTrigger)
+ * React-Style Scroll Stack Cards Animation (GSAP ScrollTrigger)
  * Dynamically binds each stacked treatment card to scroll progress.
- * As each next card scrolls up and enters the sticky stack, earlier cards
- * scale down smoothly, gain subtle ambient depth and blur, creating a tactile card deck stacking illusion.
+ * As each subsequent card scrolls up and stacks over the previous cards,
+ * earlier cards stay fully bright, crisp, and visible while subtly scaling
+ * to create a seamless, elegant luxury card deck stacking effect.
  */
 function initScrollStackCards() {
   const stackContainer = document.querySelector('.treatments-stack-container');
@@ -127,9 +128,10 @@ function initScrollStackCards() {
   const cards = Array.from(stackContainer.querySelectorAll('.treatment-stack-card'));
   if (!cards.length) return;
 
-  // Set card-index for CSS sticky positioning
+  // Set card-index and z-index for clean sticky stacking order
   cards.forEach((card, index) => {
     card.style.setProperty('--card-index', index);
+    card.style.zIndex = index + 10;
   });
 
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -140,19 +142,20 @@ function initScrollStackCards() {
       if (index === cards.length - 1) return;
 
       const nextCard = cards[index + 1];
-      const targetScale = Math.max(0.88, 1 - (cards.length - index) * 0.035);
+      // Subtle, refined scale reduction to create layered physical deck depth
+      // Leaves all cards 100% visible, fully opaque, crisp, and bright
+      const targetScale = Math.max(0.94, 1 - (cards.length - index) * 0.018);
 
       gsap.to(card, {
         scale: targetScale,
-        opacity: 0.65,
-        filter: 'brightness(0.9) blur(1px)',
+        opacity: 1,
         transformOrigin: 'top center',
         ease: 'none',
         scrollTrigger: {
           trigger: nextCard,
           start: 'top 85%',
-          end: 'top 18%',
-          scrub: 0.4,
+          end: 'top 20%',
+          scrub: 0.5,
         }
       });
     });

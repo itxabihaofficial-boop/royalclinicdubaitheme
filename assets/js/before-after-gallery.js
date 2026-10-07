@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const desktopOnly = window.matchMedia('(min-width: 1000px)');
+  const wideDesktop = window.matchMedia('(min-width: 1200px)');
   let reveal;
   let cycle;
 
@@ -61,16 +62,33 @@ document.addEventListener('DOMContentLoaded', () => {
     reset();
     if (!desktopOnly.matches) return;
 
-    const sideCards = Array.from(cards).slice(1);
-    const positions = [
-      { xPercent: -145, yPercent: -80, rotation: -7 },
-      { xPercent: 145, yPercent: -80, rotation: 7 },
-      { xPercent: -145, yPercent: 80, rotation: 5 },
-      { xPercent: 145, yPercent: 80, rotation: -5 },
-    ];
+    const desktopWide = wideDesktop.matches;
+    const positions = desktopWide
+      ? [
+          { x: 0, y: 0 },
+          { x: -408, y: -213 },
+          { x: 408, y: -213 },
+          { x: -408, y: 208 },
+          { x: 408, y: 208 },
+        ]
+      : [
+          { x: 0, y: 0 },
+          { x: -320, y: -213 },
+          { x: 320, y: -213 },
+          { x: -320, y: 208 },
+          { x: 320, y: 208 },
+        ];
 
-    gsap.set(sideCards, { xPercent: 0, yPercent: 0, rotation: 0, opacity: 0, scale: 0.82 });
-    gsap.set([heading, action], { y: 36, opacity: 0 });
+    gsap.set(cards, {
+      autoAlpha: 0,
+      xPercent: 50,
+      yPercent: 0,
+      y: () => -window.innerHeight * 1.2,
+      rotation: 45,
+      transformOrigin: 'center center',
+    });
+    gsap.set(heading, { y: 214, opacity: 1 });
+    gsap.set(action, { y: 20, autoAlpha: 0 });
     gsap.set(focusCard, { rotateY: 0 });
 
     reveal = gsap.timeline({
@@ -78,18 +96,21 @@ document.addEventListener('DOMContentLoaded', () => {
       defaults: { ease: 'power3.out' },
       scrollTrigger: { trigger: gallery, start: 'top 72%', once: true },
     })
-      .to(heading, { y: 0, opacity: 1, duration: 0.7 })
-      .to(sideCards, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.9,
-        stagger: 0.08,
-        onStart: () => sideCards.forEach((card, index) => gsap.to(card, { ...positions[index], duration: 0.9, ease: 'power3.out' })),
-      }, '-=0.22')
-      .to(action, { y: 0, opacity: 1, duration: 0.55 }, '-=0.25')
+      .to(heading, { y: 0, duration: 0.8 })
+      .to(cards, {
+        autoAlpha: 1,
+        xPercent: -50,
+        yPercent: -50,
+        x: (index) => positions[index].x,
+        y: (index) => positions[index].y,
+        rotation: 0,
+        duration: 0.95,
+        stagger: 0.12,
+      }, '-=0.2')
+      .to(action, { y: 0, autoAlpha: 1, duration: 0.55 }, '-=0.18')
       .call(startImageCycle);
   };
-
   makeAnimation();
   desktopOnly.addEventListener('change', makeAnimation);
+  wideDesktop.addEventListener('change', makeAnimation);
 });

@@ -157,9 +157,30 @@ function dynamic_clinic_scripts() {
     );
 
     wp_enqueue_script(
+        'dynamic-clinic-specialists',
+        DYNAMIC_CLINIC_URI . '/assets/js/specialists-accordion.js',
+        array( 'gsap', 'gsap-scroll-trigger' ),
+        DYNAMIC_CLINIC_VERSION,
+        true
+    );
+    wp_enqueue_script(
+        'dynamic-clinic-why-clinic',
+        DYNAMIC_CLINIC_URI . '/assets/js/why-clinic.js',
+        array( 'gsap', 'gsap-scroll-trigger' ),
+        DYNAMIC_CLINIC_VERSION,
+        true
+    );
+    wp_enqueue_script(
+        'dynamic-clinic-testimonials',
+        DYNAMIC_CLINIC_URI . '/assets/js/testimonials.js',
+        array(),
+        DYNAMIC_CLINIC_VERSION,
+        true
+    );
+    wp_enqueue_script(
         'dynamic-clinic-main',
         DYNAMIC_CLINIC_URI . '/assets/js/main.js',
-        array( 'dynamic-clinic-orbit', 'dynamic-clinic-scroll-anim', 'dynamic-clinic-results-gallery' ),
+        array( 'dynamic-clinic-orbit', 'dynamic-clinic-scroll-anim', 'dynamic-clinic-results-gallery', 'dynamic-clinic-specialists', 'dynamic-clinic-why-clinic' ),
         DYNAMIC_CLINIC_VERSION,
         true
     );

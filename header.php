@@ -39,9 +39,9 @@
                 <ul class="nav-menu">
                     <li class="nav-item current-menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#philosophy" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">Services <span class="nav-arrow">▾</span></a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">Academy <span class="nav-arrow">▾</span></a></li>
-                    <li class="nav-item"><a href="#philosophy" class="nav-link">Journal <span class="nav-arrow">▾</span></a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services <span class="nav-arrow">&#9662;</span></a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Academy <span class="nav-arrow">&#9662;</span></a></li>
+                    <li class="nav-item"><a href="#philosophy" class="nav-link">Journal <span class="nav-arrow">&#9662;</span></a></li>
                     <li class="nav-item"><a href="#book" class="nav-link">Contact</a></li>
                 </ul>
                 <?php
