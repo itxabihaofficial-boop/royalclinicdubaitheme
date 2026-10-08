@@ -24,6 +24,27 @@
       "default_value": "#101011"
     },
     {
+      "key": "field_opt_page_background_color",
+      "label": "Page Background Color",
+      "name": "brand_page_background_color",
+      "type": "color_picker",
+      "default_value": "#fdf7ef"
+    },
+    {
+      "key": "field_opt_light_sand_color",
+      "label": "Light Sand Surface Color",
+      "name": "brand_light_sand_color",
+      "type": "color_picker",
+      "default_value": "#f7ecdf"
+    },
+    {
+      "key": "field_opt_text_color",
+      "label": "Primary Text Color",
+      "name": "brand_text_color",
+      "type": "color_picker",
+      "default_value": "#633b2c"
+    },
+    {
       "key": "field_opt_clinic_name",
       "label": "Clinic Brand Name",
       "name": "clinic_brand_name",
@@ -64,6 +85,24 @@
       "name": "header_appointment_cta_link",
       "type": "text",
       "default_value": "#book"
+    },
+    {
+      "key": "field_opt_social_instagram",
+      "label": "Instagram URL",
+      "name": "social_instagram",
+      "type": "url"
+    },
+    {
+      "key": "field_opt_social_facebook",
+      "label": "Facebook URL",
+      "name": "social_facebook",
+      "type": "url"
+    },
+    {
+      "key": "field_opt_social_tiktok",
+      "label": "TikTok URL",
+      "name": "social_tiktok",
+      "type": "url"
     }
   ],
   "location": [

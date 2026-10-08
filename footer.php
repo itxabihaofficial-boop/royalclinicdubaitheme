@@ -19,6 +19,9 @@ if ( empty($clinic_name) ) {
 }
 
 $clinic_name_upper = strtoupper( $clinic_name );
+$social_instagram = dynamic_clinic_field( 'social_instagram', '#', 'option' );
+$social_facebook  = dynamic_clinic_field( 'social_facebook', '#', 'option' );
+$social_tiktok    = dynamic_clinic_field( 'social_tiktok', '#', 'option' );
 ?>
 <footer class="site-footer" id="contact">
 
@@ -63,13 +66,13 @@ $clinic_name_upper = strtoupper( $clinic_name );
         <div class="footer-col">
             <h4 class="footer-col-heading">Social</h4>
             <div class="footer-social">
-                <a href="<?php echo esc_url( function_exists('get_field') ? get_field('social_instagram', 'option') : '#' ); ?>" class="footer-social-btn" aria-label="Instagram">
+                <a href="<?php echo esc_url( $social_instagram ); ?>" class="footer-social-btn" aria-label="Instagram">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 </a>
-                <a href="<?php echo esc_url( function_exists('get_field') ? get_field('social_facebook', 'option') : '#' ); ?>" class="footer-social-btn" aria-label="Facebook">
+                <a href="<?php echo esc_url( $social_facebook ); ?>" class="footer-social-btn" aria-label="Facebook">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
-                <a href="<?php echo esc_url( function_exists('get_field') ? get_field('social_tiktok', 'option') : '#' ); ?>" class="footer-social-btn" aria-label="TikTok">
+                <a href="<?php echo esc_url( $social_tiktok ); ?>" class="footer-social-btn" aria-label="TikTok">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
                 </a>
             </div>

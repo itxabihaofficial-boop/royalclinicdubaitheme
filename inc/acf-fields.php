@@ -312,6 +312,24 @@ function dynamic_clinic_register_acf_fields() {
                 'type' => 'text',
                 'default_value' => '#book',
             ),
+            array(
+                'key' => 'field_opt_social_instagram',
+                'label' => 'Instagram URL',
+                'name' => 'social_instagram',
+                'type' => 'url',
+            ),
+            array(
+                'key' => 'field_opt_social_facebook',
+                'label' => 'Facebook URL',
+                'name' => 'social_facebook',
+                'type' => 'url',
+            ),
+            array(
+                'key' => 'field_opt_social_tiktok',
+                'label' => 'TikTok URL',
+                'name' => 'social_tiktok',
+                'type' => 'url',
+            ),
         ),
         'location' => array(
             array(

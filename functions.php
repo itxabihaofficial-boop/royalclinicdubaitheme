@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-define( 'DYNAMIC_CLINIC_VERSION', '1.0.0' );
+define( 'DYNAMIC_CLINIC_VERSION', '1.0.1' );
 define( 'DYNAMIC_CLINIC_DIR', get_template_directory() );
 define( 'DYNAMIC_CLINIC_URI', get_template_directory_uri() );
 /**
@@ -150,21 +150,45 @@ function dynamic_clinic_scripts() {
         $custom_sand    = get_field( 'brand_light_sand_color', 'option' );
         $custom_text    = get_field( 'brand_text_color', 'option' );
 
+        $custom_primary = sanitize_hex_color( $custom_primary );
+        $custom_accent  = sanitize_hex_color( $custom_accent );
+        $custom_bg      = sanitize_hex_color( $custom_bg );
+        $custom_page_bg = sanitize_hex_color( $custom_page_bg );
+        $custom_sand    = sanitize_hex_color( $custom_sand );
+        $custom_text    = sanitize_hex_color( $custom_text );
+
+        // The styles use both palette tokens and semantic aliases, so update both layers.
         $inline_css = ':root {';
-        if ( ! empty( $custom_primary ) ) {
-            $inline_css .= '--color-primary: ' . esc_attr( $custom_primary ) . ';';
+        if ( $custom_primary ) {
+            $inline_css .= '--color-bronze: ' . $custom_primary . ';';
+            $inline_css .= '--color-primary: ' . $custom_primary . ';';
+            $inline_css .= '--color-accent-gold: ' . $custom_primary . ';';
+            $inline_css .= '--e-global-color-75f: ' . $custom_primary . ';';
+            $inline_css .= '--global-color-75f: ' . $custom_primary . ';';
         }
-        if ( ! empty( $custom_accent ) ) {
-            $inline_css .= '--color-accent-amber: ' . esc_attr( $custom_accent ) . ';';
-            $inline_css .= '--color-accent-gold: ' . esc_attr( $custom_accent ) . ';';
+        if ( $custom_accent ) {
+            $inline_css .= '--color-copper: ' . $custom_accent . ';';
+            $inline_css .= '--color-primary-dark: ' . $custom_accent . ';';
+            $inline_css .= '--color-accent-amber: ' . $custom_accent . ';';
+            $inline_css .= '--color-accent-gold: ' . $custom_accent . ';';
+            $inline_css .= '--e-global-color-a56: ' . $custom_accent . ';';
+            $inline_css .= '--global-color-a56: ' . $custom_accent . ';';
         }
-        if ( ! empty( $custom_bg ) ) {
-            $inline_css .= '--color-espresso-dark: ' . esc_attr( $custom_bg ) . ';';
-            $inline_css .= '--bg-body: ' . esc_attr( $custom_bg ) . ';';
+        if ( $custom_bg ) {
+            $inline_css .= '--color-obsidian: ' . $custom_bg . ';';
+            $inline_css .= '--color-espresso-dark: ' . $custom_bg . ';';
+            $inline_css .= '--color-dark-surface: ' . $custom_bg . ';';
+            $inline_css .= '--e-global-color-a02: ' . $custom_bg . ';';
+            $inline_css .= '--global-color-a02: ' . $custom_bg . ';';
         }
-        if ( $custom_page_bg = sanitize_hex_color( $custom_page_bg ) ) { $inline_css .= '--color-page-bg: ' . $custom_page_bg . ';'; }
-        if ( $custom_sand = sanitize_hex_color( $custom_sand ) ) { $inline_css .= '--color-light-sand: ' . $custom_sand . ';'; }
-        if ( $custom_text = sanitize_hex_color( $custom_text ) ) { $inline_css .= '--color-espresso: ' . $custom_text . ';'; }
+        if ( $custom_page_bg ) { $inline_css .= '--color-page-bg: ' . $custom_page_bg . ';'; }
+        if ( $custom_sand ) { $inline_css .= '--color-light-sand: ' . $custom_sand . ';'; }
+        if ( $custom_text ) {
+            $inline_css .= '--color-espresso: ' . $custom_text . ';';
+            $inline_css .= '--color-secondary: ' . $custom_text . ';';
+            $inline_css .= '--e-global-color-2de: ' . $custom_text . ';';
+            $inline_css .= '--global-color-2de: ' . $custom_text . ';';
+        }
         $inline_css .= '}';
 
         wp_add_inline_style( 'dynamic-clinic-tokens', $inline_css );
@@ -258,6 +282,98 @@ if ( function_exists( 'acf_add_options_page' ) ) {
     ) );
 }
 
+/**
+ * Return the default values used by the Clinic Settings options page.
+ */
+function dynamic_clinic_settings_defaults() {
+    return array(
+        'field_opt_primary_color'          => '#986a3e',
+        'field_opt_accent_color'           => '#70441b',
+        'field_opt_dark_color'             => '#101011',
+        'field_opt_page_background_color'  => '#fdf7ef',
+        'field_opt_light_sand_color'       => '#f7ecdf',
+        'field_opt_text_color'             => '#633b2c',
+        'field_opt_clinic_name'            => 'DYNAMIC CLINIC',
+        'field_opt_clinic_phone'           => '+1 (800) 456-7890',
+        'field_opt_clinic_email'           => 'concierge@dynamicclinic.com',
+        'field_opt_clinic_address'         => '450 Luxury Boulevard, Suite 800, Beverly Hills, CA',
+        'field_opt_nav_cta_text'           => 'BOOK APPOINTMENT',
+        'field_opt_nav_cta_link'           => '#book',
+        'field_opt_social_instagram'       => '',
+        'field_opt_social_facebook'        => '',
+        'field_opt_social_tiktok'          => '',
+    );
+}
+
+/**
+ * Restore every Clinic Settings field after ACF handles the submitted form.
+ */
+function dynamic_clinic_reset_settings_to_defaults( $post_id ) {
+    if ( 'options' !== $post_id || empty( $_POST['dynamic_clinic_reset_defaults'] ) || ! current_user_can( 'edit_posts' ) ) {
+        return;
+    }
+
+    foreach ( dynamic_clinic_settings_defaults() as $field_key => $default_value ) {
+        update_field( $field_key, $default_value, 'option' );
+    }
+
+    set_transient( 'dynamic_clinic_settings_reset_' . get_current_user_id(), true, MINUTE_IN_SECONDS );
+}
+add_action( 'acf/save_post', 'dynamic_clinic_reset_settings_to_defaults', 20 );
+
+/**
+ * Add a reset action alongside ACF's settings save button.
+ */
+function dynamic_clinic_settings_reset_button() {
+    $screen = get_current_screen();
+
+    if ( ! $screen || false === strpos( $screen->id, 'clinic-theme-settings' ) ) {
+        return;
+    }
+    ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var submitArea = document.querySelector('.acf-form-submit');
+
+        if (!submitArea) {
+            return;
+        }
+
+        var resetButton = document.createElement('button');
+        resetButton.type = 'submit';
+        resetButton.name = 'dynamic_clinic_reset_defaults';
+        resetButton.value = '1';
+        resetButton.className = 'button button-secondary';
+        resetButton.textContent = 'Reset All Settings';
+        resetButton.addEventListener('click', function (event) {
+            if (!window.confirm('Reset all Clinic Settings, including colours and contact details, to their defaults?')) {
+                event.preventDefault();
+            }
+        });
+        submitArea.appendChild(resetButton);
+    });
+    </script>
+    <?php
+}
+add_action( 'admin_footer', 'dynamic_clinic_settings_reset_button' );
+
+/**
+ * Confirm a completed reset on the Clinic Settings screen.
+ */
+function dynamic_clinic_settings_reset_notice() {
+    if ( empty( $_GET['page'] ) || 'clinic-theme-settings' !== $_GET['page'] ) {
+        return;
+    }
+
+    $transient_key = 'dynamic_clinic_settings_reset_' . get_current_user_id();
+    if ( ! get_transient( $transient_key ) ) {
+        return;
+    }
+
+    delete_transient( $transient_key );
+    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Clinic Settings have been restored to their defaults.', 'dynamic-clinic' ) . '</p></div>';
+}
+add_action( 'admin_notices', 'dynamic_clinic_settings_reset_notice' );
 /**
  * Load ACF Programmatic Fields definition
  */

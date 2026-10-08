@@ -8,8 +8,10 @@
 $theme_uri = get_template_directory_uri();
 $clinic_phone = function_exists( 'get_field' ) ? get_field( 'clinic_phone', 'option' ) : '';
 $clinic_email = function_exists( 'get_field' ) ? get_field( 'clinic_email', 'option' ) : '';
-$clinic_phone = $clinic_phone ?: '+971 4 123 4567';
+$clinic_address = function_exists( 'get_field' ) ? get_field( 'clinic_address', 'option' ) : '';
+$clinic_phone = $clinic_phone ?: '+1 (800) 456-7890';
 $clinic_email = $clinic_email ?: 'concierge@dynamicclinic.com';
+$clinic_address = $clinic_address ?: '450 Luxury Boulevard, Suite 800, Beverly Hills, CA';
 $booking_eyebrow = dynamic_clinic_field( 'booking_eyebrow', 'Private consultation' );
 $booking_title = dynamic_clinic_field( 'booking_title', 'Request an appointment' );
 $booking_intro = dynamic_clinic_field( 'booking_intro', 'Tell us a little about your goals and our concierge team will contact you shortly.' );
@@ -44,6 +46,7 @@ $booking_inquiries_heading = dynamic_clinic_field( 'booking_inquiries_heading', 
                     <span aria-hidden="true" class="booking-contact-mark">&#10022;</span>
                     <h3><?php echo esc_html( $booking_inquiries_heading ); ?></h3>
                     <a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $clinic_phone ) ); ?>"><?php echo esc_html( $clinic_phone ); ?></a>
+                    <p class="booking-contact-address"><?php echo esc_html( $clinic_address ); ?></p>
                     <a href="mailto:<?php echo esc_attr( $clinic_email ); ?>"><?php echo esc_html( $clinic_email ); ?></a>
                 </div>
             </aside>

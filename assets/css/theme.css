@@ -5,7 +5,6 @@
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-@import url('tokens.css');
 
 /* ==========================================================================
    CSS Reset & Base
@@ -78,7 +77,7 @@ button {
 }
 
 /* ==========================================================================
-   Navigation — Flat Light Bar (Dermato Style)
+   Navigation â€” Flat Light Bar (Dermato Style)
    Three-column layout: left=nav links, center=logo, right=CTA button
    ========================================================================== */
 .site-header {
@@ -116,7 +115,7 @@ button {
   transition: all var(--transition-base);
 }
 
-/* Brand Logo — centered column */
+/* Brand Logo â€” centered column */
 .site-logo {
   display: flex;
   align-items: center;
@@ -146,14 +145,14 @@ button {
   line-height: 1;
 }
 
-/* Replace the pseudo-element dot with a ✿ symbol via CSS content */
+/* Replace the pseudo-element dot with a âœ¿ symbol via CSS content */
 .logo-badge-icon::after {
   content: '+';
   font-size: 1rem;
   color: var(--color-bronze);
 }
 
-/* Menu Links — left column */
+/* Menu Links â€” left column */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -209,7 +208,7 @@ button {
   transform: translateY(2px);
 }
 
-/* CTA Button — right column */
+/* CTA Button â€” right column */
 .btn-nav-appointment {
   display: inline-flex;
   align-items: center;
@@ -277,7 +276,7 @@ button {
 }
 
 /* ==========================================================================
-   Hero Section Wrapper — Inset Card (Dermato Style)
+   Hero Section Wrapper â€” Inset Card (Dermato Style)
    The hero section sits inside a rounded bordered card with page-gutter
    spacing on all sides, so the cream background peeks around the edges.
    ========================================================================== */
@@ -288,7 +287,7 @@ button {
   background-color: var(--bg-body);
 }
 
-/* Hero Card — the rounded rectangle that frames the hero */
+/* Hero Card â€” the rounded rectangle that frames the hero */
 .hero-section {
   position: relative;
   min-height: calc(100svh - 68px - calc(var(--hero-wrapper-padding) * 2));
@@ -1193,8 +1192,9 @@ button {
 .booking-consent { grid-template-columns: auto 1fr; align-items: center; gap: 0.55rem !important; font-weight: 500 !important; line-height: 1.4; }.booking-consent input { width: 1.05rem; height: 1.05rem; accent-color: var(--color-primary); }.booking-form-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.25rem; }.booking-submit { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.82rem 1rem; border: 0; border-radius: var(--radius-pill); color: var(--color-warm-white); background: var(--color-primary); font-size: 0.72rem; font-weight: 700; transition: background var(--transition-fast), transform var(--transition-fast); }.booking-submit span { display: grid; width: 1.25rem; height: 1.25rem; place-items: center; border-radius: 50%; background: rgba(255, 253, 249, 0.16); }.booking-submit:hover { background: var(--color-primary-dark); transform: translateY(-2px); }.booking-form-footer small { color: var(--text-secondary); font-size: 0.7rem; text-align: right; }
 .booking-visual { position: relative; min-height: 37rem; overflow: hidden; background: var(--color-espresso-dark); }.booking-visual::after { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40, 21, 13, 0.02) 25%, rgba(40, 21, 13, 0.48) 100%); content: ''; }.booking-visual > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }.booking-contact-card { position: absolute; z-index: 1; right: 1.15rem; bottom: 1.15rem; left: 1.15rem; display: grid; justify-items: center; gap: 0.45rem; padding: 1.5rem; border: 1px solid rgba(255, 253, 249, 0.22); border-radius: var(--radius-lg); color: var(--color-warm-white); background: rgba(112, 68, 27, 0.56); backdrop-filter: blur(14px); text-align: center; }.booking-contact-mark { color: var(--color-primary-light); font-size: 1.4rem; }.booking-contact-card h3 { margin: 0.1rem 0 0.2rem; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; }.booking-contact-card a { color: rgba(255, 253, 249, 0.92); font-size: 0.82rem; font-weight: 700; }.booking-contact-card a:hover { color: var(--color-primary-light); }
 @media (max-width: 760px) { .section-booking-request { padding-right: 1rem; padding-left: 1rem; }.booking-request { grid-template-columns: 1fr; }.booking-form-panel { padding: 2rem 1.25rem; }.booking-form-grid { grid-template-columns: 1fr; }.booking-form-footer { align-items: flex-start; flex-direction: column; }.booking-form-footer small { text-align: left; }.booking-visual { min-height: 28rem; }.booking-contact-card { padding: 1.2rem; } }
+.booking-contact-address { max-width: 22rem; margin: 0.25rem 0 0; color: rgba(255, 253, 249, 0.76); font-size: 0.72rem; line-height: 1.45; }
 /* ==========================================================================
-   Site Footer — Glowence Style
+   Site Footer â€” Glowence Style
    Dark base | 5-col links grid | copyright bar | giant display brand name
    ========================================================================== */
 

@@ -36,16 +36,46 @@ $specialists = array(
         ),
     ),
 );
+
+// Use the page's ACF repeater when it has content, while retaining the
+// curated cards as a complete fallback for a new or partially configured page.
+$acf_specialists = dynamic_clinic_field( 'specialists_items', array() );
+if ( is_array( $acf_specialists ) && ! empty( $acf_specialists ) ) {
+    $default_specialists = $specialists;
+    $specialists = array();
+
+    foreach ( $acf_specialists as $index => $item ) {
+        $default = isset( $default_specialists[ $index ] ) ? $default_specialists[ $index ] : $default_specialists[0];
+        $service = ! empty( $item['service'] ) ? $item['service'] : $default['service'];
+        $facts = ! empty( $item['facts'] )
+            ? preg_split( '/\r\n|\r|\n/', $item['facts'] )
+            : $default['facts'];
+
+        $specialists[] = array(
+            'id'      => sanitize_title( $service ) . '-' . ( $index + 1 ),
+            'service' => $service,
+            'summary' => ! empty( $item['summary'] ) ? $item['summary'] : $default['summary'],
+            'name'    => ! empty( $item['name'] ) ? $item['name'] : $default['name'],
+            'role'    => ! empty( $item['role'] ) ? $item['role'] : $default['role'],
+            'image'   => dynamic_clinic_image_url( isset( $item['image'] ) ? $item['image'] : '', $default['image'] ),
+            'facts'   => array_values( array_filter( array_map( 'trim', $facts ) ) ),
+        );
+    }
+}
+
+$specialists_eyebrow = dynamic_clinic_field( 'specialists_eyebrow', 'Clinical expertise, considered personally' );
+$specialists_title   = dynamic_clinic_field( 'specialists_title', 'Meet our <em>specialists.</em>' );
+$specialists_lead    = dynamic_clinic_field( 'specialists_lead', 'Every consultation begins with listening. Explore the clinicians behind our most considered aesthetic and restorative care.' );
 ?>
 
 <section class="section-specialists" id="specialists" aria-labelledby="specialists-title">
     <div class="container">
         <div class="specialists-intro">
             <div>
-                <span class="specialists-eyebrow"><span aria-hidden="true"></span> Clinical expertise, considered personally</span>
-                <h2 id="specialists-title">Meet our <em>specialists.</em></h2>
+                <span class="specialists-eyebrow"><span aria-hidden="true"></span> <?php echo esc_html( $specialists_eyebrow ); ?></span>
+                <h2 id="specialists-title"><?php echo wp_kses_post( $specialists_title ); ?></h2>
             </div>
-            <p>Every consultation begins with listening. Explore the clinicians behind our most considered aesthetic and restorative care.</p>
+            <p><?php echo esc_html( $specialists_lead ); ?></p>
         </div>
 
         <div class="specialists-directory" data-specialists-directory>

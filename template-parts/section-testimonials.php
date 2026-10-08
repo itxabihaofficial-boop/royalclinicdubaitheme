@@ -12,13 +12,31 @@ $testimonials = array(
     array( 'quote' => 'The doctors listened closely and never rushed me. I left feeling confident in the plan and genuinely cared for.', 'name' => 'Olivia Chen', 'role' => 'Creative director', 'image' => 'card-skincare.jpg' ),
     array( 'quote' => 'A quietly luxurious experience with real clinical expertise behind it. The difference in my skin has been remarkable.', 'name' => 'Priya Mehta', 'role' => 'Product manager', 'image' => 'card-glow.jpg' ),
 );
+$acf_testimonials = dynamic_clinic_field( 'testimonial_items', array() );
+if ( is_array( $acf_testimonials ) && ! empty( $acf_testimonials ) ) {
+    $default_testimonials = $testimonials;
+    $testimonials = array();
+
+    foreach ( $acf_testimonials as $index => $item ) {
+        $default = isset( $default_testimonials[ $index ] ) ? $default_testimonials[ $index ] : $default_testimonials[0];
+        $testimonials[] = array(
+            'quote' => ! empty( $item['quote'] ) ? $item['quote'] : $default['quote'],
+            'name'  => ! empty( $item['name'] ) ? $item['name'] : $default['name'],
+            'role'  => ! empty( $item['role'] ) ? $item['role'] : $default['role'],
+            'image' => dynamic_clinic_image_url( isset( $item['image'] ) ? $item['image'] : '', $theme_uri . '/assets/images/' . $default['image'] ),
+        );
+    }
+}
+
+$testimonials_eyebrow = dynamic_clinic_field( 'testimonials_eyebrow', 'Patient stories' );
+$testimonials_title    = dynamic_clinic_field( 'testimonials_title', 'What our<br><em>patients say.</em>' );
 ?>
 <section class="section-testimonials" id="testimonials" aria-labelledby="testimonials-title" data-testimonials>
     <div class="container">
         <div class="testimonials-layout">
             <header class="testimonials-intro">
-                <span class="testimonials-eyebrow">Patient stories</span>
-                <h2 id="testimonials-title">What our<br><em>patients say.</em></h2>
+                <span class="testimonials-eyebrow"><?php echo esc_html( $testimonials_eyebrow ); ?></span>
+                <h2 id="testimonials-title"><?php echo wp_kses_post( $testimonials_title ); ?></h2>
                 <div class="testimonials-controls" aria-label="Testimonial controls">
                     <button type="button" class="testimonials-control" data-testimonial-prev aria-label="Show previous testimonials">&larr;</button>
                     <button type="button" class="testimonials-control" data-testimonial-next aria-label="Show next testimonials">&rarr;</button>
@@ -32,7 +50,7 @@ $testimonials = array(
                         <span class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                         <p>&ldquo;<?php echo esc_html( $testimonial['quote'] ); ?>&rdquo;</p>
                         <footer>
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/' . $testimonial['image'] ); ?>" alt="" loading="lazy">
+                            <img src="<?php echo esc_url( dynamic_clinic_image_url( $testimonial['image'], $theme_uri . '/assets/images/avatar-therapist.jpg' ) ); ?>" alt="" loading="lazy">
                             <span><strong><?php echo esc_html( $testimonial['name'] ); ?></strong><small><?php echo esc_html( $testimonial['role'] ); ?></small></span>
                         </footer>
                     </article>

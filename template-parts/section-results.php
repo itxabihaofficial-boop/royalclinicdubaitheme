@@ -26,6 +26,14 @@ if ( is_array( $acf_results ) && ! empty( $acf_results ) ) {
         );
     }
 }
+$results_tags = dynamic_clinic_field( 'results_tags', '' );
+$results_tags = is_string( $results_tags ) ? preg_split( '/\r\n|\r|\n/', $results_tags ) : array();
+$results_tags = array_values( array_filter( array_map( 'trim', $results_tags ) ) );
+if ( empty( $results_tags ) ) {
+    $results_tags = array( 'Brightening & Glow', 'Texture Refinement', 'Hair Restoration', 'Hydration & Plumpness' );
+}
+
+$results_cta_link = dynamic_clinic_link_url( dynamic_clinic_field( 'results_cta_link', '' ), '#book' );
 ?>
 
 <section class="section-results" id="results" aria-labelledby="results-title">
@@ -38,10 +46,9 @@ if ( is_array( $acf_results ) && ! empty( $acf_results ) ) {
                 </div>
 
                 <div class="results-tags" aria-label="Treatment result categories">
-                    <span>[ Brightening &amp; Glow ]</span>
-                    <span>[ Texture Refinement ]</span>
-                    <span>[ Hair Restoration ]</span>
-                    <span>[ Hydration &amp; Plumpness ]</span>
+                    <?php foreach ( $results_tags as $tag ) : ?>
+                        <span>[ <?php echo esc_html( $tag ); ?> ]</span>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -65,7 +72,7 @@ if ( is_array( $acf_results ) && ! empty( $acf_results ) ) {
             </div>
 
             <div class="results-action">
-                <a href="#book" class="results-link">
+                <a href="<?php echo esc_url( $results_cta_link ); ?>" class="results-link">
                     <span><?php echo esc_html( dynamic_clinic_field( 'results_cta_text', 'Begin Your Transformation' ) ); ?></span>
                     <span aria-hidden="true">&#8594;</span>
                 </a>

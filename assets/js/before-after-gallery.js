@@ -78,6 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
           { x: -320, y: 208 },
           { x: 320, y: 208 },
         ];
+    const positionFor = (index) => {
+      if (positions[index]) return positions[index];
+      const column = (index - 1) % 2 === 0 ? -1 : 1;
+      const row = Math.floor((index - 1) / 2);
+      return { x: column * (desktopWide ? 408 : 320), y: 208 + row * 220 };
+    };
+
 
     gsap.set(cards, {
       autoAlpha: 0,
@@ -101,8 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         autoAlpha: 1,
         xPercent: -50,
         yPercent: -50,
-        x: (index) => positions[index].x,
-        y: (index) => positions[index].y,
+        x: (index) => positionFor(index).x,
+        y: (index) => positionFor(index).y,
         rotation: 0,
         duration: 0.95,
         stagger: 0.12,

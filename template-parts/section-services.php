@@ -108,6 +108,32 @@ $treatments = array(
         ),
     ),
 );
+
+$acf_treatments = dynamic_clinic_field( 'services_items', array() );
+if ( is_array( $acf_treatments ) && ! empty( $acf_treatments ) ) {
+    $default_treatments = $treatments;
+    $treatments = array();
+
+    foreach ( $acf_treatments as $index => $item ) {
+        $default = isset( $default_treatments[ $index ] ) ? $default_treatments[ $index ] : $default_treatments[0];
+        $feature_labels = ! empty( $item['features'] )
+            ? preg_split( '/\r\n|\r|\n/', $item['features'] )
+            : wp_list_pluck( $default['features'], 'label' );
+        $features = array();
+        foreach ( array_filter( array_map( 'trim', $feature_labels ) ) as $label ) {
+            $features[] = array( 'label' => $label, 'icon' => '' );
+        }
+
+        $treatments[] = array(
+            'title'    => ! empty( $item['title'] ) ? $item['title'] : $default['title'],
+            'desc'     => ! empty( $item['description'] ) ? $item['description'] : $default['desc'],
+            'image'    => dynamic_clinic_image_url( isset( $item['image'] ) ? $item['image'] : '', $default['image'] ),
+            'link'     => dynamic_clinic_link_url( isset( $item['link'] ) ? $item['link'] : '', $default['link'] ),
+            'doctor'   => ! empty( $item['doctor'] ) ? $item['doctor'] : $default['doctor'],
+            'features' => ! empty( $features ) ? $features : $default['features'],
+        );
+    }
+}
 ?>
 
 <section class="section-treatments-stack" id="services">
