@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-define( 'DYNAMIC_CLINIC_VERSION', '1.0.1' );
+define( 'DYNAMIC_CLINIC_VERSION', '1.0.2' );
 define( 'DYNAMIC_CLINIC_DIR', get_template_directory() );
 define( 'DYNAMIC_CLINIC_URI', get_template_directory_uri() );
 /**
@@ -186,6 +186,65 @@ function dynamic_clinic_scripts() {
         if ( $custom_text ) {
             $inline_css .= '--color-espresso: ' . $custom_text . ';';
             $inline_css .= '--color-secondary: ' . $custom_text . ';';
+            $inline_css .= '--e-global-color-2de: ' . $custom_text . ';';
+            $inline_css .= '--global-color-2de: ' . $custom_text . ';';
+        }
+        // Override dependent tokens as well, so every selected setting is visible
+        // across sections that use derived shades, navigation, and body surfaces.
+        if ( $custom_primary ) {
+            $inline_css .= '--color-bronze-80: color-mix(in srgb, ' . $custom_primary . ' 80%, transparent);';
+            $inline_css .= '--color-bronze-60: color-mix(in srgb, ' . $custom_primary . ' 60%, transparent);';
+            $inline_css .= '--color-bronze-50: color-mix(in srgb, ' . $custom_primary . ' 50%, transparent);';
+            $inline_css .= '--color-bronze-10: color-mix(in srgb, ' . $custom_primary . ' 10%, transparent);';
+            $inline_css .= '--color-bronze-06: color-mix(in srgb, ' . $custom_primary . ' 6%, transparent);';
+            $inline_css .= '--color-primary-light: color-mix(in srgb, ' . $custom_primary . ' 78%, white);';
+            $inline_css .= '--color-primary-alpha: color-mix(in srgb, ' . $custom_primary . ' 10%, transparent);';
+            $inline_css .= '--color-primary-alpha-50: color-mix(in srgb, ' . $custom_primary . ' 50%, transparent);';
+            $inline_css .= '--color-primary-alpha-80: color-mix(in srgb, ' . $custom_primary . ' 80%, transparent);';
+            $inline_css .= '--color-accent-gold: ' . $custom_primary . ';';
+            $inline_css .= '--color-accent-glow: color-mix(in srgb, ' . $custom_primary . ' 35%, transparent);';
+            $inline_css .= '--color-accent-glow-strong: color-mix(in srgb, ' . $custom_primary . ' 55%, transparent);';
+            $inline_css .= '--border-primary: color-mix(in srgb, ' . $custom_primary . ' 50%, transparent);';
+        }
+        if ( $custom_accent ) {
+            $inline_css .= '--color-copper: ' . $custom_accent . ';';
+            $inline_css .= '--color-primary-dark: ' . $custom_accent . ';';
+            $inline_css .= '--color-accent-amber: ' . $custom_accent . ';';
+        }
+        if ( $custom_bg ) {
+            $inline_css .= '--color-obsidian: ' . $custom_bg . ';';
+            $inline_css .= '--color-dark-surface: ' . $custom_bg . ';';
+            $inline_css .= '--color-dark: ' . $custom_bg . ';';
+            $inline_css .= '--color-dark-espresso: ' . $custom_bg . ';';
+            $inline_css .= '--color-dark-transparent: color-mix(in srgb, ' . $custom_bg . ' 0%, transparent);';
+            $inline_css .= '--color-footer-bg: color-mix(in srgb, ' . $custom_bg . ' 88%, black);';
+        }
+        if ( $custom_page_bg ) {
+            $inline_css .= '--color-page-bg: ' . $custom_page_bg . ';';
+            $inline_css .= '--color-page-bg-alt: color-mix(in srgb, ' . $custom_page_bg . ' 92%, black);';
+            $inline_css .= '--color-page-section: color-mix(in srgb, ' . $custom_page_bg . ' 92%, white);';
+            $inline_css .= '--color-cream: ' . $custom_page_bg . ';';
+            $inline_css .= '--bg-body: ' . $custom_page_bg . ';';
+            $inline_css .= '--nav-bg: ' . $custom_page_bg . ';';
+            $inline_css .= '--nav-bg-scrolled: color-mix(in srgb, ' . $custom_page_bg . ' 96%, transparent);';
+            $inline_css .= '--e-global-color-c9a: ' . $custom_page_bg . ';';
+            $inline_css .= '--global-color-c9a: ' . $custom_page_bg . ';';
+        }
+        if ( $custom_sand ) {
+            $inline_css .= '--color-sand: ' . $custom_sand . ';';
+            $inline_css .= '--color-light-sand: ' . $custom_sand . ';';
+            $inline_css .= '--e-global-color-3ee: ' . $custom_sand . ';';
+            $inline_css .= '--global-color-3ee: ' . $custom_sand . ';';
+        }
+        if ( $custom_text ) {
+            $inline_css .= '--color-espresso: ' . $custom_text . ';';
+            $inline_css .= '--color-espresso-80: color-mix(in srgb, ' . $custom_text . ' 80%, transparent);';
+            $inline_css .= '--color-espresso-10: color-mix(in srgb, ' . $custom_text . ' 10%, transparent);';
+            $inline_css .= '--color-secondary: ' . $custom_text . ';';
+            $inline_css .= '--color-secondary-alpha: color-mix(in srgb, ' . $custom_text . ' 10%, transparent);';
+            $inline_css .= '--color-secondary-alpha-50: color-mix(in srgb, ' . $custom_text . ' 80%, transparent);';
+            $inline_css .= '--text-main: ' . $custom_text . ';';
+            $inline_css .= '--text-dim: color-mix(in srgb, ' . $custom_text . ' 35%, transparent);';
             $inline_css .= '--e-global-color-2de: ' . $custom_text . ';';
             $inline_css .= '--global-color-2de: ' . $custom_text . ';';
         }
